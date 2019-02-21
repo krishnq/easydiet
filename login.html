@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Login to MRITTICA</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<link rel="icon" type="image/png" href="img/header.jpg" />
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css" />
+
+	<link rel="stylesheet" type="text/css" href="css/util.css" />
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+
+<body>
+
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('img/header.jpg');">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form">
+					<span class="login100-form-logo">
+						<i class="zmdi zmdi-landscape"></i>
+					</span>
+
+					<span class="login100-form-title p-b-25 p-t-20">
+						Sign IN
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter username">
+
+						<input class="input100" type="text" id="inputEmail" placeholder="Username" />
+
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" type="password" id="inputPassword" placeholder="Password" />
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
+
+					<div class="contact100-form-checkbox">
+						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me" />
+						<label class="label-checkbox100" for="ckb1">
+							Remember me
+						</label>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" type="button" value="Sign in" onclick="pageSignin()">
+							<a class="txt1">
+								Sign in
+							</a>
+						</button>
+
+					</div>
+
+					<div class="text-center p-t-90">
+						<a class="txt1" href="alert('stillworking')">
+							Forgot Password?
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+
+	<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-storage.js"></script>
+
+	<script src="js/jquery.blockUI.js"></script>
+
+	<script src="backend_js/app.js"> </script>
+
+
+	<script type="text/javascript">
+		$(function () {
+			$.blockUI({
+				message: '<h1><img src="images/loading.gif" width="75px" height="75px" /> Just a moment...</h1>'
+			});
+
+		});
+	</script>
+
+	<script type="text/javascript">
+		function pageSignup() {
+			var email = document.getElementById('inputEmail').value;
+			var pwd = document.getElementById('inputPassword').value;
+			console.log(email);
+			signup(email, pwd);
+		}
+
+		function pageSignin() {
+			var email = document.getElementById('inputEmail').value;
+			var pwd = document.getElementById('inputPassword').value;
+			console.log(email);
+			signin(email, pwd);
+
+		}
+		firebase.auth().onAuthStateChanged(function (user) {
+			if (user == null) {
+				$.unblockUI();
+				//alert("please login first.");
+
+				//window.location.replace('index.html');
+			} else {
+				window.location.replace('main.html');
+				//showItem();
+				$.unblockUI();
+			}
+		});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
+
+    <style>
+        body {
+            background: #0D324D;
+            font-family: 'PT Sans Narrow', sans-serif;
+        }
+
+        .item {
+            width: 20%;
+            float: left;
+            overflow: hidden;
+            border: 1px solid gray;
+            height: 300px;
+            padding: 0px;
+            margin-top: 0;
+
+            background: #DDEDAA;
+        }
+
+        .img-holder {
+            position: relative;
+            width: 100%;
+            height: 65%;
+        }
+
+        .img-holder img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .text-holder {
+            text-align: center;
+        }
+
+        .category-holder {
+            height: 400px;
+            width: 100%;
+        }
+
+        .cat-head-holder {
+            height: 100px;
+            margin: 0px;
+            background: #F56476;
+        }
+
+
+        .cat-body {
+            margin: 0px;
+            height: 300px;
+        }
+
+        h1 {
+            transform: translate(0, 30px);
+            text-align: center;
+            font-size: 40px;
+        }
+
+        .container {
+            width: 100%;
+
+            padding: 0%;
+            margin: 0;
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container tb-padding">
+        <div class="category-holder">
+            <div class="cat-head-holder">
+                <h1>Healthy Plate</h1>
+            </div>
+            <div class="cat-body" id="0cat1">
+
+            </div>
+        </div>
+        <div class="category-holder">
+            <div class="cat-head-holder">
+                <h1>Weight Training</h1>
+            </div>
+            <div class="cat-body" id="0cat2">
+
+            </div>
+        </div>
+        <div class="category-holder">
+            <div class="cat-head-holder">
+                <h1>Keto Diet </h1>
+            </div>
+            <div class="cat-body" id="0cat3">
+
+            </div>
+        </div>
+        <div class="category-holder">
+            <div class="cat-head-holder">
+                <h1>Dry Fruits & Seeds</h1>
+            </div>
+            <div class="cat-body" id="0cat4">
+
+            </div>
+        </div>
+        <div class="category-holder">
+            <div class="cat-head-holder">
+                <h1>Juices & Shakes</h1>
+            </div>
+            <div class="cat-body" id="0cat5">
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-auth.js"></script>
+
+    <script>
+        window.onload = function () {
+            showItem("cat1", "Vegetable Omelette", "80", "50");
+            showItem("cat1", "Grilled Chicken", "300", "30");
+            showItem("cat1", "Muesli with Milk", '80', '20');
+            showItem("cat1", "Sprouts Bowl", '150', '20');
+            showItem("cat1", "Fruit Bowl", "150", "30");
+
+            showItem("cat2", "Boiled Eggs", "80", "50");
+            showItem("cat2", "Chicken Wings", "300", "30");
+            showItem("cat2", "Oats and Milk", "80", "50");
+            showItem("cat2", "Oats Khichdi", "120", "30");
+            showItem("cat2", "Grilled Paneer", "180", "50");
+
+            showItem("cat3", "Cheese Omelette", "100", "30");
+            showItem("cat3", "Chicken Wings and Mayonnaise", "325", "50");
+            showItem("cat3", "Grilled Paneer and Cheese", "200", "30");
+            showItem("cat3", "Peanuts Masala", "100", "50");
+            showItem("cat3", "Protein Bar", "300", "30");
+
+            showItem("cat4", "Flax Seeds", "120", "50");
+            showItem("cat4", "Almonds", "300", "30");
+            showItem("cat4", "Peanuts", "80", "50");
+            showItem("cat4", "Sunflower Seeds", "200", "30");
+            showItem("cat4", "Pumpkin seeds", "180", "50");
+
+            showItem("cat5", "Carrot Juice", "80", "30");
+            showItem("cat5", "Mixed Veg Juice", "80", "50");
+            showItem("cat5", "Apple Shake", "100", "30");
+            showItem("cat5", "Banana Shake", "100", "50");
+            showItem("cat5", "Coconut Water", "80", "50");
+        }
+
+        function showItem(cat, name, cost, cal) {
+            elem =
+                `<div class="item col-ls-2 col-sm-2 col-xl-2 ${cat}">
+                    <div class="img-holder">
+                        <img src="${name}.jpg" alt="img1">
+                    </div>
+                    <div class="text-holder">
+                        <h3>${name}</h3>
+                        <h5>Rs: ${cost}</h5>
+                        <h6>Calorific Value: ${cal}cal</h6>
+                    </div>
+                </div>`
+
+            $('#0' + cat).append(elem);
+        }
+    </script>
+
+</body>
+
+</html>

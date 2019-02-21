@@ -1,0 +1,86 @@
+.no-display {
+  display: none;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+}
+
+.menu-title {
+  font-size: 15px !important;
+}
+
+.nav li a:focus,
+.nav li a:hover {
+  background-color: initial;
+}
+
+iframe {
+  margin: 0;
+  border: none;
+}
+
+.nav-item {
+  cursor: pointer;
+}
+
+.force-size-15 {
+  font-size: 15px;
+}
+
+.my-text-input-big,
+.my-select-big {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.my-submit-button-big {
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.my-submit-button-small {
+
+  color: white;
+  padding: 7px 14px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.green-color-button {
+  background-color: #4CAF50;
+}
+
+.green-color-button:hover {
+  background-color: #45a049;
+}
+
+.table-centric>tbody>tr>td,
+.table-centric>tbody>tr>th,
+.table-centric>tfoot>tr>td,
+.table-centric>tfoot>tr>th,
+.table-centric>thead>tr>td,
+.table-centric>thead>tr>th {
+  text-align: center;
+}
+
+input[type=file] {
+  display: none;
+
+}
