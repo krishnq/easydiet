@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
 
     <style>
@@ -80,13 +82,36 @@
         ::-webkit-scrollbar {
             display: none;
         }
+
+        .btn {
+            margin-left: 50%;
+            margin-top: 2%;
+            margin-bottom: 2%;
+            padding: 15px 30px;
+            transform: translate(-50%, 0);
+            margin-right: 2%;
+        }
+
+        i {
+            cursor: pointer;
+        }
+
+        h2 {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            font-size: 60px;
+            text-align: center;
+            color: aliceblue;
+        }
     </style>
 
 </head>
 
 <body>
-
+    <h2>Easy Diet</h2>
     <div class="container tb-padding">
+
         <div class="category-holder">
             <div class="cat-head-holder">
                 <h1>Healthy Plate</h1>
@@ -127,6 +152,9 @@
 
             </div>
         </div>
+        <button onclick="location.href = url" class="btn">
+            CART
+        </button>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
@@ -170,16 +198,31 @@
             elem =
                 `<div class="item col-ls-2 col-sm-2 col-xl-2 ${cat}">
                     <div class="img-holder">
-                        <img src="${name}.jpg" alt="img1">
+                        <img src="ItemImages/${name}.jpg" alt="img1">
                     </div>
                     <div class="text-holder">
                         <h3>${name}</h3>
                         <h5>Rs: ${cost}</h5>
-                        <h6>Calorific Value: ${cal}cal</h6>
+<h6>Calorific Value: ${cal}cal <i class="fas fa-shopping-cart" style="float:right;margin-right:30px;" onclick="addToCart('${name}',${cost});"></i></h6>
+
                     </div>
                 </div>`
 
             $('#0' + cat).append(elem);
+        }
+
+        var url = "cart.html#";
+
+        function addToCart(item, cost) {
+            item = item.replaceAll(" ", "&");
+            url = url + "%" + item + "%" + cost;
+            console.log(url);
+        }
+        String.prototype.replaceAll = function (search, replace) {
+            if (replace === undefined) {
+                return this.toString();
+            }
+            return this.split(search).join(replace);
         }
     </script>
 
