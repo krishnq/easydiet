@@ -14,6 +14,22 @@
 
 	<link rel="stylesheet" type="text/css" href="css/util.css" />
 	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	<style>
+		#button {
+			position: fixed;
+			margin: 30px;
+			top: 20px;
+			z-index: 20;
+			margin-left: 90%;
+}
+#button2 {
+position: fixed;
+margin: 30px;
+top: 20px;
+z-index: 20;
+margin-left: 82%;
+}
+	</style>
 </head>
 
 <body>
@@ -59,15 +75,22 @@
 					</div>
 
 					<div class="text-center p-t-90">
-						<a class="txt1" href="alert('stillworking')">
+						<a class="txt1" href="alert('We will get this up ASAP')">
 							Forgot Password?
 						</a>
 					</div>
 				</form>
 			</div>
 		</div>
-	</div>
+		<div id="button">
+			<button class="btn label-download" onclick="window.location.href = 'index.html'">Home</span>
 
+		</div>
+		<div id="button2">
+			<button class="btn label-download" onclick="window.location.href = 'main.html'">Browse</span>
+
+		</div>
+	</div>
 
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
