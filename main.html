@@ -233,35 +233,35 @@
         }
         window.onload = function () {
             //$('.wrapper')[0].style.height = window.height;
-            showItem("cat1", "Vegetable Omelette", "80", "50");
-            showItem("cat1", "Grilled Chicken", "300", "30");
-            showItem("cat1", "Muesli with Milk", '80', '20');
-            showItem("cat1", "Sprouts Bowl", '150', '20');
-            showItem("cat1", "Fruit Bowl", "150", "30");
+            showItem("cat1", "Vegetable Omelette", "60", "2 pieces");
+            showItem("cat1", "Grilled Chicken", "200", "4 pieces");
+            showItem("cat1", "Muesli with Yogurt", '80', '150gm');
+            showItem("cat1", "Sprouts Bowl", '75', '150gm');
+            showItem("cat1", "Fruit Bowl", "120", "30");
 
-            showItem("cat2", "Boiled Eggs", "80", "50");
-            showItem("cat2", "Chicken Wings", "300", "30");
-            showItem("cat2", "Oats and Milk", "80", "50");
-            showItem("cat2", "Oats Khichdi", "120", "30");
-            showItem("cat2", "Grilled Paneer", "180", "50");
+            showItem("cat2", "Boiled Eggs", "50", "4 pieces");
+            showItem("cat2", "Chicken Wings", "200", "4 pieces");
+            showItem("cat2", "Oats and Milk", "80", "150gm");
+            showItem("cat2", "Oats Khichdi", "100", "1 plate");
+            showItem("cat2", "Grilled Paneer", "150", "8 pieces");
 
-            showItem("cat3", "Cheese Omelette", "100", "30");
-            showItem("cat3", "Chicken Wings and Mayonnaise", "325", "50");
-            showItem("cat3", "Grilled Paneer and Cheese", "200", "30");
-            showItem("cat3", "Peanuts Masala", "100", "50");
-            showItem("cat3", "Protein Bar", "300", "30");
+            showItem("cat3", "Cheese Omelette", "70", "4 eggs");
+            showItem("cat3", "Chicken Wings and Mayonnaise", "200", "4 pieces");
+            showItem("cat3", "Grilled Paneer and Cheese", "175", "8 pieces");
+            showItem("cat3", "Peanuts Masala", "80", "150gm");
+            showItem("cat3", "Protein Bar", "80", "150gm");
 
-            showItem("cat4", "Flax Seeds", "120", "50");
-            showItem("cat4", "Almonds", "300", "30");
-            showItem("cat4", "Peanuts", "80", "50");
-            showItem("cat4", "Sunflower Seeds", "200", "30");
-            showItem("cat4", "Pumpkin Seeds", "180", "50");
+            showItem("cat4", "Flax Seeds", "120", "150gm");
+            showItem("cat4", "Almonds", "220", "150gm");
+            showItem("cat4", "Peanuts", "60", "150gm");
+            showItem("cat4", "Sunflower Seeds", "120", "150gm");
+            showItem("cat4", "Pumpkin Seeds", "120", "150gm");
 
-            showItem("cat5", "Carrot Juice", "80", "30");
-            showItem("cat5", "Mixed Veg Juice", "80", "50");
-            showItem("cat5", "Apple Shake", "100", "30");
-            showItem("cat5", "Banana Shake", "100", "50");
-            showItem("cat5", "Coconut Water", "80", "50");
+            showItem("cat5", "Carrot Juice", "70", "200ml");
+            showItem("cat5", "Mixed Veg Juice", "70", "200ml");
+            showItem("cat5", "Apple Shake", "80", "200ml");
+            showItem("cat5", "Banana Shake", "70", "200ml");
+            showItem("cat5", "Coconut Water", "40", "200ml");
         }
 
         function showItem(cat, name, cost, cal) {
@@ -273,7 +273,7 @@
                     <div class="text-holder">
                         <h3>${name}</h3>
                         <h5>Rs: ${cost}</h5>
-<h6>Size: ${cal}cal <i class="fas fa-shopping-cart" style="float:right;margin-right:30px;" onclick="addToCart('${name}',${cost});"></i></h6>
+<h6>Qty: ${cal} <i class="fas fa-shopping-cart" style="float:right;margin-right:30px;" onclick="addToCart('${name}',${cost});"></i></h6>
 
                     </div>
                 </div>`
