@@ -104,6 +104,56 @@
             text-align: center;
             color: aliceblue;
         }
+
+        #button {
+            position: fixed;
+            margin: 30px;
+            top: 20px;
+            margin-left: 90%;
+        }
+    </style>
+
+    <style>
+        .notif-item-holder {
+            position: fixed;
+            top: 0;
+            left: 100px;
+            z-index: 200;
+        }
+
+        .notif-item {
+            width: 95%;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            font-size: 2em;
+            margin: 1%;
+            background: #F7F7F7;
+        }
+
+        .wrapper {
+            position: fixed;
+            height: 500px;
+            width: 300px;
+            display: table-cell;
+            vertical-align: bottom;
+        }
+
+        .wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content {
+            position: absolute;
+            bottom: 0;
+            max-height: 100%;
+            width: 100%;
+            overflow: auto;
+        }
     </style>
 </head>
 
@@ -155,13 +205,34 @@
             CART
         </button>
     </div>
+    <div class="notif-item-holder wrapper" style="display: none">
+        <div id="notification-bar" class="content">
+        </div>
 
-    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-auth.js"></script>
+    </div>
+    <div id="button">
+        <button class="btn label-download" onclick="window.location.href = 'login.html'">Login</span>
+
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-storage.js"></script>
+
+    <script src="jquery.blockUI.js"></script>
+
+    <script src="backend_js/app.js"> </script>
 
     <script>
+        let i = 0;
+
+        function addNotification(message) {
+            let elem = `<div class="notif-item" id="notif-item-${i}" onclick="$(this).remove();">${message}</div>`;
+            $('#notification-bar').prepend(elem);
+        }
         window.onload = function () {
+            //$('.wrapper')[0].style.height = window.height;
             showItem("cat1", "Vegetable Omelette", "80", "50");
             showItem("cat1", "Grilled Chicken", "300", "30");
             showItem("cat1", "Muesli with Milk", '80', '20');
@@ -202,7 +273,7 @@
                     <div class="text-holder">
                         <h3>${name}</h3>
                         <h5>Rs: ${cost}</h5>
-<h6>Calorific Value: ${cal}cal <i class="fas fa-shopping-cart" style="float:right;margin-right:30px;" onclick="addToCart('${name}',${cost});"></i></h6>
+<h6>Size: ${cal}cal <i class="fas fa-shopping-cart" style="float:right;margin-right:30px;" onclick="addToCart('${name}',${cost});"></i></h6>
 
                     </div>
                 </div>`
@@ -212,10 +283,21 @@
 
         var url = "cart.html#";
 
+
         function addToCart(item, cost) {
-            item = item.replaceAll(" ", "&");
-            url = url + "%" + item + "%" + cost;
-            console.log(url);
+            user = firebase.auth().currentUser;
+            if (user == null) {
+                //$.unblockUI();
+                //console.log("asdffgfdfs");
+                alert("please login first.");
+                //addNotification("please Login first");
+                //window.location.replace('index.html');
+            } else {
+                item = item.replaceAll(" ", "&");
+                url = url + "%" + item + "%" + cost;
+                console.log(url);
+            }
+
         }
         String.prototype.replaceAll = function (search, replace) {
             if (replace === undefined) {
